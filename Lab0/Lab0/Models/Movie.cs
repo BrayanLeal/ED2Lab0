@@ -7,8 +7,8 @@ namespace Lab0.Models
 {
     public class Movie
     {
-        public string Year { get; set; }
-        public string Title { get; set; }
-        public string Dir { get; set; }
+        public static string Year { get; }
+        public static string Title { get; }
+        public static string Dir { get; }
     }
 }
