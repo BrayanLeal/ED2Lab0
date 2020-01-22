@@ -13,9 +13,13 @@ namespace Lab0.Controllers
     public class WeatherForecastController : ControllerBase
     {
        [HttpPost]
-       public void Post(Movie PMovie)
+       
+       public ActionResult<Movie> Post([FromBody]Movie PMovie)
         {
-            Data.Instance.movies.Add(PMovie);
+            
+           Data.Instance.movies.Add(PMovie);
+            //return CreatedAtRoute("Get",new { title =PMovie.Title.ToString()},PMovie);
+            return PMovie;
         }
 
         [HttpGet]
