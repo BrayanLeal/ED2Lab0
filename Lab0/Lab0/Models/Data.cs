@@ -17,5 +17,6 @@ namespace Lab0.Models
             }
         }
         public List<Movie> movies = new List<Movie>();
+
     }
 }
