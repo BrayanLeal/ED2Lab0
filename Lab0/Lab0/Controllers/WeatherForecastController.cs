@@ -12,51 +12,28 @@ namespace Lab0.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-       [HttpPost]
-       
-       public ActionResult<Movie> Post([FromBody]Movie PMovie)
+        private readonly Data _data;
+        public WeatherForecastController(Data data)
         {
-            
-           Data.Instance.movies.Add(PMovie);
-            //return CreatedAtRoute("Get",new { title =PMovie.Title.ToString()},PMovie);
+            _data = new Data();
+        }
+
+
+        [HttpPost]
+
+        public  ActionResult<Movie> Post([FromBody]Movie PMovie)
+        {
+           
             return PMovie;
         }
-        //public Stack<Movie> Movies { get; set; }
-        /*public Movie()
-        {
-            Movies = new Stack<Movie>();
-        }*/
+
         [HttpGet]
         public List<Movie> Get(Movie NMovie)
         {
-            return Data.Instance.movies;
+             return Data.Instance.movies;
             
         }
-        //stack 
-        public Stack<Movie> Movies { get; set; }
-        public MovieSet()
-        {
-            Movies = new Stack<Movie>();
-        }
-        public void Create(Movie movie)
-        {
-            Movies.Push(movie);
-        }
-        public List<Movie> Get()
-        {
-            List<Movie> temp = new List<Movie>();
-            int aux = 1;
-            foreach (var item in Movies)
-            {
-                temp.Add(Movies.Peek());
-                aux++;
-                if (aux>10)
-                {
-                    break;
-                }
-
-            }
-            return temp;
-        }
+      
+ 
     }
 }

@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Lab0.Models;
+using Microsoft.Extensions.Options;
 
 namespace Lab0
 {
@@ -23,7 +25,13 @@ namespace Lab0
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+
         {
+            services.Configure<Data>(Configuration.GetSection(nameof(Data)));
+
+            services.AddSingleton<HerData>(sp => sp.GetRequiredService<IOptions<Data>>().Value);
+
+            services.AddSingleton<Data>();
             services.AddControllers();
         }
 
